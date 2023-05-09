@@ -32,6 +32,11 @@ Se ha utilizado Docker para la dockerización del servicio REST y sus pruebas. S
 
 <img src="./img/docker2.png" alt="Docker">
 
+```
+docker build -t kma-notas-nodejs:rest .
+docker build -t kma-notas-nodejs:test .
+```
+
 #### latest: contiene la imagen del servicio REST.
 
 #### test: contiene la imagen con las pruebas unitarias del servicio REST.
