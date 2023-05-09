@@ -37,7 +37,7 @@ docker build -t kma-notas-nodejs:rest .
 docker build -t kma-notas-nodejs:test .
 ```
 
-#### latest: contiene la imagen del servicio REST.
+#### rest: contiene la imagen del servicio REST.
 
 #### test: contiene la imagen con las pruebas unitarias del servicio REST.
 
