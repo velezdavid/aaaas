@@ -1,7 +1,7 @@
 const request = require("supertest");
-const app = require("../app");
+const app = require("../src/app");
 const mongoose = require("mongoose");
-const Note = require("../models/Note");
+const Note = require("../src/models/Note");
 
 // Pruebas para el controlador de notas
 describe("NoteController", () => {

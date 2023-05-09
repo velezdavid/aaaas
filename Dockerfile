@@ -1,5 +1,5 @@
 # # Usa la imagen de node como base
-# FROM node:14-alpine
+# FROM node:16-alpine
 
 # # Establece el directorio de trabajo
 # WORKDIR /app
@@ -22,7 +22,7 @@
 
 
 # Stage 1 - Construir
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --quiet
@@ -37,7 +37,7 @@ COPY . .
 RUN npm run test
 
 # Stage 3 - Producción
-FROM node:14-alpine
+FROM node:16-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --quiet --production
