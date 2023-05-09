@@ -12,19 +12,25 @@ MongoDB: como base de datos para el almacenamiento de la información.
 Mongoose: como ODM (Object Document Mapper) para la conexión y manejo de la base de datos MongoDB.
 En este proyecto se han implementado los siguientes métodos del CRUD:
 
+```
 GET: Obtener todos los registros de la entidad.
 GET/:id: Obtener un registro de la entidad por su ID.
 POST: Crear un nuevo registro en la entidad.
 PUT/:id: Actualizar un registro de la entidad por su ID.
 DELETE/:id: Eliminar un registro de la entidad por su ID.
+```
 
 ## Pruebas unitarias
 
 Se han implementado pruebas unitarias utilizando el framework de pruebas Jest. Estas pruebas cubren los métodos del servicio REST y se han ejecutado con éxito.
 
+<img src="./img/test.png" alt="Pruebas unitarias">
+
 ## Dockerización
 
 Se ha utilizado Docker para la dockerización del servicio REST y sus pruebas. Se han creado dos tags en la imagen:
+
+<img src="./img/docker.png" alt="Docker">
 
 #### latest: contiene la imagen del servicio REST.
 
@@ -42,11 +48,17 @@ Etapa 3: Ejecución del servicio REST.
 
 La imagen de Docker se encuentra disponible en Docker Hub con los siguientes nombres:
 
+<img src="./img/docker.png" alt="hub">
+
+```
 velezdavid/aaaas:latest: contiene la imagen del servicio REST.
 velezdavid/aaaas:test: contiene la imagen con las pruebas unitarias del servicio REST.
+```
 
 Para ejecutar la imagen se puede utilizar el siguiente comando:
 
 ```
 docker run -p 3000:3000 velezdavid/aaaas:latest
 ```
+
+<img src="./img/postman.png" alt="postman">

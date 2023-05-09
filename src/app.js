@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const noteRouter = require("./controllers/noteController");
 
 const app = express();
 
@@ -13,7 +14,6 @@ app.use(express.json());
 app.use(cors());
 
 // Configurar rutas
-const noteRouter = require("./controllers/noteController");
 app.use("/api/notes", noteRouter);
 
 // Configurar base de datos
