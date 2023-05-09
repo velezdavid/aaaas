@@ -21,59 +21,25 @@
 
 
 
-
-# # Stage 1 - Construir
-# FROM node:14-alpine AS builder
-# WORKDIR /usr/src/app
-# COPY package*.json ./
-# RUN npm ci --quiet
-# COPY . .
-# RUN npm run build
-
-# # Stage 2 - Compilar
-# FROM node:14-alpine AS compiler
-# WORKDIR /usr/src/app
-# COPY package*.json ./
-# RUN npm ci --quiet --production
-# COPY --from=builder /usr/src/app/dist ./dist
-# COPY src/models ./src/models
-# COPY src/controllers ./src/controllers
-# COPY src/app.js ./src/app.js
-# RUN npm run test
-
-# # Stage 3 - Producción
-# FROM node:14-alpine
-# WORKDIR /usr/src/app
-# COPY package*.json ./
-# RUN npm ci --quiet --production
-# COPY --from=compiler /usr/src/app/dist ./dist
-# COPY src/models ./src/models
-# COPY src/controllers ./src/controllers
-# COPY src/app.js ./src/app.js
-# CMD ["node", "./dist/app.js"]
-
-
-# Stage 1 - Construir la app
-FROM node:14 AS build
-WORKDIR /app
+# Stage 1 - Construir
+FROM node:14-alpine AS builder
+WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+RUN npm ci --quiet
 COPY . .
 RUN npm run build
 
-# Stage 2 - Ejecutar pruebas
-
-FROM build AS test
-ENV NODE_ENV=test
+# Stage 2 - Compilar y ejecutar pruebas
+FROM builder AS tester
+WORKDIR /usr/src/app
+RUN npm ci --quiet --only=development
+COPY . .
 RUN npm run test
 
 # Stage 3 - Producción
 FROM node:14-alpine
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
-COPY --from=build /app/dist ./dist
-CMD ["node", "run", "./dist/app.js"]
-
-
-
+RUN npm ci --quiet --production
+COPY --from=builder /usr/src/app/dist ./dist
+CMD ["node", "./dist/app.js"]
