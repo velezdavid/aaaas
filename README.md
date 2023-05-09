@@ -30,7 +30,7 @@ Se han implementado pruebas unitarias utilizando el framework de pruebas Jest. E
 
 Se ha utilizado Docker para la dockerización del servicio REST y sus pruebas. Se han creado dos tags en la imagen:
 
-<img src="./img/docker.png" alt="Docker">
+<img src="./img/docker2.png" alt="Docker">
 
 #### latest: contiene la imagen del servicio REST.
 
