@@ -48,17 +48,17 @@ Etapa 3: Ejecución del servicio REST.
 
 La imagen de Docker se encuentra disponible en Docker Hub con los siguientes nombres:
 
-<img src="./img/docker.png" alt="hub">
-
 ```
-velezdavid/aaaas:latest: contiene la imagen del servicio REST.
-velezdavid/aaaas:test: contiene la imagen con las pruebas unitarias del servicio REST.
+velezdavid/kma-notas-nodejs:rest: contiene la imagen del servicio REST.
+velezdavid/kma-notas-nodejs:test: contiene la imagen con las pruebas unitarias del servicio REST.
 ```
 
 Para ejecutar la imagen se puede utilizar el siguiente comando:
 
 ```
-docker run -p 3000:3000 velezdavid/aaaas:latest
+docker run -p 3000:3000 velezdavid/kma-notas-nodejs:rest
 ```
+
+<img src="./img/docker.png" alt="hub">
 
 <img src="./img/postman.png" alt="postman">
