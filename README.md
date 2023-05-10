@@ -30,7 +30,7 @@ Se han implementado pruebas unitarias utilizando el framework de pruebas Jest. E
 
 Se ha utilizado Docker para la dockerización del servicio REST y sus pruebas. Se han creado dos tags en la imagen:
 
-<img src="./img/docker2.png" alt="Docker">
+<img src="./img/tag1.png" alt="tag1">
 
 ```
 docker build -t kma-aprendizaje-nodejs:rest .
@@ -48,6 +48,8 @@ Se ha aplicado multistage a la imagen del servicio REST para separar la construc
 - Etapa 1: Instalación de dependencias.
 - Etapa 2: Ejecución de las pruebas unitarias.
 - Etapa 3: Ejecución del servicio REST.
+
+<img src="./img/tag2.png" alt="tag2">
 
 ## Uso de la imagen
 
