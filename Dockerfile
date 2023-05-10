@@ -1,3 +1,5 @@
+# --------------------------------------------------------------------------------
+
 # # Usa la imagen de node como base
 # FROM node:16-alpine
 
@@ -19,27 +21,30 @@
 # # Inicia la aplicación
 # CMD [ "npm", "start" ]
 
+# --------------------------------------------------------------------------------
 
 
-# Stage 1 - Construir
-FROM node:16-alpine AS builder
+
+# Etapa 1: Construir la imagen de la aplicación y copiar los archivos necesarios
+FROM node:14-alpine AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --quiet
+RUN npm install --only=development
 COPY . .
-RUN npm run build
 
-# Stage 2 - Compilar y ejecutar pruebas
-FROM builder AS tester
-WORKDIR /usr/src/app
-RUN npm ci --quiet --only=development
-COPY . .
-RUN npm run test
+# Etapa 2: Ejecutar los tests
+FROM build AS test
+RUN npm test
 
-# Stage 3 - Producción
-FROM node:16-alpine
+# Etapa 3: Crear la imagen final de producción
+FROM node:14-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --quiet --production
-COPY --from=builder /usr/src/app/dist ./dist
-CMD ["node", "./dist/app.js"]
+RUN npm install --only=production
+COPY --from=build /usr/src/app .
+
+# Especificar el comando por defecto para iniciar la aplicación
+CMD ["npm", "start"]
+
+
+# --------------------------------------------------------------------------------

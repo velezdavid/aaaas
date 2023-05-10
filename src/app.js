@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const noteRouter = require("./controllers/noteController");
+const aprendizajeRouter = require("./controllers/aprendizajeController");
 
 const app = express();
 
@@ -14,13 +14,16 @@ app.use(express.json());
 app.use(cors());
 
 // Configurar rutas
-app.use("/api/notes", noteRouter);
+app.use("/api/aprendizajes", aprendizajeRouter);
 
 // Configurar base de datos
-mongoose.connect("mongodb+srv://facci:facci@cluster0.kidus.mongodb.net/notes", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://facci:facci@cluster0.kidus.mongodb.net/aprendizajes",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const db = mongoose.connection;
 

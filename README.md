@@ -33,8 +33,8 @@ Se ha utilizado Docker para la dockerización del servicio REST y sus pruebas. S
 <img src="./img/docker2.png" alt="Docker">
 
 ```
-docker build -t kma-notas-nodejs:rest .
-docker build -t kma-notas-nodejs:test .
+docker build -t kma-aprendizaje-nodejs:rest .
+docker build -t kma-aprendizaje-nodejs:test .
 ```
 
 #### rest: contiene la imagen del servicio REST.
@@ -45,9 +45,9 @@ docker build -t kma-notas-nodejs:test .
 
 Se ha aplicado multistage a la imagen del servicio REST para separar la construcción de la imagen y la ejecución de la misma en tres etapas:
 
-Etapa 1: Instalación de dependencias.
-Etapa 2: Ejecución de las pruebas unitarias.
-Etapa 3: Ejecución del servicio REST.
+- Etapa 1: Instalación de dependencias.
+- Etapa 2: Ejecución de las pruebas unitarias.
+- Etapa 3: Ejecución del servicio REST.
 
 ## Uso de la imagen
 
