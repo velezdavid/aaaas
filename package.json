@@ -1,5 +1,5 @@
 {
-  "name": "notes-app",
+  "name": "aprendizajes-app",
   "version": "1.0.0",
   "description": "API REST para el módulo de notas",
   "main": "app.js",

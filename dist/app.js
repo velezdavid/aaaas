@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const aprendizajeRouter = require("./controllers/aprendizajeController");
 const app = express();
 
 // Configurar variables de entorno
@@ -12,11 +13,10 @@ app.use(express.json());
 app.use(cors());
 
 // Configurar rutas
-const noteRouter = require("../src/controllers/noteController");
-app.use("/api/notes", noteRouter);
+app.use("/api/aprendizajes", aprendizajeRouter);
 
 // Configurar base de datos
-mongoose.connect("mongodb+srv://facci:facci@cluster0.kidus.mongodb.net/notes", {
+mongoose.connect("mongodb+srv://facci:facci@cluster0.kidus.mongodb.net/aprendizajes", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
